@@ -44,5 +44,11 @@ public class StringCalculatorTest {
 	public void custom_delimiter_should_be_possible() throws Exception {
 		assertThat( calculator.add("//;\n1;2;3"), is(6) );
 	}
+	
+	@Test
+	public void negative_number_literals_should_be_ignored() throws Exception {
+		assertThat( calculator.add("-1"), is(0) );
+		assertThat( calculator.add("1,-2,3"), is(4) );
+	}
 
 }

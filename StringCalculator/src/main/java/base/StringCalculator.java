@@ -1,33 +1,49 @@
 package base;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 public class StringCalculator {
+	
+	private static final String CACLULATOR_PATTERN = "^(//(.)\n)?(.*)$";
+
+	class CalculatorInformation{
+		private String delimiterRegex;
+		private List<String> numberLiterals;
+		
+		public String getDelimiterRegex() {
+			return delimiterRegex;
+		}
+		public void setDelimiterRegex(String delimiterRegex) {
+			this.delimiterRegex = delimiterRegex;
+		}
+		public List<String> getNumberLiterals() {
+			return numberLiterals;
+		}
+		public void setNumberLiterals(String... numberLiterals) {
+			this.numberLiterals = Arrays.asList(numberLiterals);
+		}
+		
+	}
 
 	private static final String NEWLINE = "\n";
 	private static final String DEFAULT_DELIMITER = ",";
-	private static final String DELIMITER_REGEX = "[" + DEFAULT_DELIMITER + NEWLINE + "]";
 
 	public int add(String expression) {
-		String[] parsedExpression = parse( expression );
+		CalculatorInformation calcInfo = parse( expression );
 		
-		String delimiterExpression = parsedExpression[0];
-		String numberLiterals = parsedExpression[1];
-		
-		return calculateSum(numberLiterals, delimiterExpression);
+		return calculateSum(calcInfo);
 	}
 
-	private String[] parse(String expression) {
-		//TODO: parse expression; match delimiter and numberLiterals; return both as array of string;
-		String[] splittetCalculatorInformation = new String[2];
-		String calculator_pattern = "^(//(.)\n)?(.*)$";
+	private CalculatorInformation parse(String expression) {
+		CalculatorInformation calcInfo = new CalculatorInformation();
+		
 		String delimiter = DEFAULT_DELIMITER;
 		String numberLiterals = null;
 		
-		
-		Pattern pattern = Pattern.compile(calculator_pattern, Pattern.DOTALL);
+		Pattern pattern = Pattern.compile(CACLULATOR_PATTERN, Pattern.DOTALL);
 		Matcher matcher = pattern.matcher(expression);
 		
 		if( matcher.find() ){
@@ -38,27 +54,34 @@ public class StringCalculator {
 			numberLiterals = matcher.group(3);
 		}
 		
+		calcInfo.setDelimiterRegex( getDelimiterExpression( delimiter ) );
 		
-		splittetCalculatorInformation[0] = getDelimiterExpression( delimiter );
-		splittetCalculatorInformation[1] = numberLiterals;
+		String[] numberList = splitNumberLiterals( numberLiterals, getDelimiterExpression(delimiter) );
+		calcInfo.setNumberLiterals( numberList );
 				
-		return splittetCalculatorInformation;
+		return calcInfo;
+	}
+
+	private String[] splitNumberLiterals(String numberLiterals, String delimiterExpression) {
+
+		return numberLiterals.split( delimiterExpression );
 	}
 
 	private String getDelimiterExpression(String delimiter) {
 		return "[" + delimiter + NEWLINE + "]";
 	}
 
-	private int calculateSum(String delimitedNumbers, String delimiterRegex) {
+	private int calculateSum(CalculatorInformation calcInfo) {
 		int sum = 0;
-
-		if( ! delimitedNumbers.isEmpty() ){
-			String[] numberLiterals = delimitedNumbers.split( delimiterRegex );
+		
+		for (String numberLiteral : calcInfo.getNumberLiterals() ) {
+			if( numberLiteral.isEmpty() ) continue;
 			
-			for (String numberLiteral : numberLiterals) {
-				sum += toInt(numberLiteral);
-			}
-		}			
+			int number = toInt( numberLiteral );
+			
+			if( number < 0 ) continue;
+			sum += number;
+		}
 		return sum;
 	}
 
