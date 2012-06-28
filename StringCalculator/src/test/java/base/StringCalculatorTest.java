@@ -12,5 +12,11 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 		assertThat( calculator.add(""), is(0) );
 	}
+	
+	@Test
+	public void single_literal_number_should_avaluate_ist_value() throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		assertThat( calculator.add("42"), is(42) );
+	}
 
 }
