@@ -34,5 +34,10 @@ public class StringCalculatorTest {
 	public void multiple_literal_numbers_with_delimiters_should_evaluate_to_sum(){
 		assertThat( calculator.add("1,2,3"), is(6) );
 	}
+	
+	@Test
+	public void newline_between_numbers_should_be_recognized() throws Exception {
+		assertThat( calculator.add("1\n2,3"), is(6));
+	}
 
 }
