@@ -29,5 +29,10 @@ public class StringCalculatorTest {
 	public void literal_numbers_with_delimiter_should_evaluate_to_sum() throws Exception {
 		assertThat( calculator.add( "1,2" ), is(3) );
 	}
+	
+	@Test
+	public void multiple_literal_numbers_with_delimiters_should_evaluate_to_sum(){
+		assertThat( calculator.add("1,2,3"), is(6) );
+	}
 
 }

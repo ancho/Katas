@@ -6,18 +6,24 @@ public class StringCalculator {
 
 	public int add(String expression) {
 		
-		if( expression.isEmpty() ){
-			return 0;
-		}
-		if( expression.contains(DEFAULT_DELIMITER) ){
-			String[] numberLiterals = expression.split(DEFAULT_DELIMITER);
-			return toInt( numberLiterals[0] ) + toInt( numberLiterals[1] );
-		}
-		return toInt(expression);
+		return calculateSum(expression);
 	}
 
-	private int toInt(String expression) {
-		return Integer.parseInt(expression);
+	private int calculateSum(String delimitedNumbers) {
+		int sum = 0;
+
+		if( ! delimitedNumbers.isEmpty() ){
+			String[] numberLiterals = delimitedNumbers.split(DEFAULT_DELIMITER);
+			
+			for (String numberLiteral : numberLiterals) {
+				sum += toInt(numberLiteral);
+			}
+		}			
+		return sum;
+	}
+
+	private int toInt(String numberLiteral) {
+		return Integer.parseInt(numberLiteral);
 	}
 
 }
