@@ -7,8 +7,7 @@ public class StringCalculator {
 
 	public int add(String expression) {
 		CalculatorParser parser = new CalculatorParser();
-		List<String> numberLiterals = parser.parse(expression);
-		return calculateSum(numberLiterals);
+		return calculateSum(parser.parse(expression));
 	}
 
 	private int calculateSum(List<String> numberLiterals) {
