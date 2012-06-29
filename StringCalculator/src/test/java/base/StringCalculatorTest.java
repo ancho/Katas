@@ -46,5 +46,11 @@ public class StringCalculatorTest {
 		assertThat( calculator.add("//;\n1;2;3;4"), is(10));
 	}
 	
+	@Test
+	public void ignore_negative_number_literals() throws Exception {
+		assertThat( calculator.add("-1"), is(0));
+		assertThat( calculator.add("-1,2,-3"), is(2));
+	}
+	
 
 }
