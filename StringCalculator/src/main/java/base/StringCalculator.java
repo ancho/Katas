@@ -16,8 +16,7 @@ public class StringCalculator {
 		
 		for (String numberLiteral : numberLiterals) {
 			int number = toInt(numberLiteral);
-			
-			if(number < 0) continue;
+			if( number < 0 ) continue;
 			sum += number;
 		}
 		return sum;

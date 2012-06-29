@@ -8,21 +8,18 @@ import java.util.regex.Pattern;
 
 public class CalculatorParser {
 
-	private static final String CALCULATOR_PATTERN = "(//(.)\n)?((\\d*.?)*)";
+	private static final String CALCULATOR_PATTERN = "(//(.)\n)?((-?\\d+.?)+)";
 	private static final String NEWLINE_DELIMITER = "\n";
 	private static final String DEFAULT_DELIMITER = ",";
 	private List<String> numberLiterals;
+	private Pattern pattern;
 
 	public CalculatorParser() {
 		numberLiterals = new ArrayList<String>();
+		pattern = Pattern.compile(CALCULATOR_PATTERN, Pattern.DOTALL);
 	}
 
 	public List<String> parse(String expression) {
-		if( expression.isEmpty() ){
-			return numberLiterals;
-		}
-		
-		Pattern pattern = Pattern.compile(CALCULATOR_PATTERN, Pattern.DOTALL);
 		
 		Matcher matcher = pattern.matcher(expression);
 		
