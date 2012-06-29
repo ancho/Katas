@@ -3,6 +3,8 @@ package base;
 public class StringCalculator {
 
 	private static final String DEFAULT_DELIMITER = ",";
+	private static final String NEWLINE_DELIMITER = "\n";
+	private static final String DELIMITER_EXPRESSION = "[" + DEFAULT_DELIMITER + NEWLINE_DELIMITER + "]";
 
 	public int add(String expression) {
 		
@@ -13,7 +15,7 @@ public class StringCalculator {
 		
 		int sum = 0;
 		
-		for (String numberLiteral : expression.split(DEFAULT_DELIMITER)) {
+		for (String numberLiteral : expression.split(DELIMITER_EXPRESSION)) {
 			if( numberLiteral.isEmpty() ) continue;
 			sum += toInt(numberLiteral);
 		}
