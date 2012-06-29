@@ -2,15 +2,21 @@ package base;
 
 public class StringCalculator {
 
+	private static final String DEFAULT_DELIMITER = ",";
+
 	public int add(String expression) {
 		
 		if( expression.isEmpty() ) return 0;
 		
-		if( expression.contains(",")){
-			String[] numberLiterals = expression.split(",");
-			return Integer.parseInt(numberLiterals[0]) + Integer.parseInt(numberLiterals[1]);
+		if( expression.contains(DEFAULT_DELIMITER)){
+			String[] numberLiterals = expression.split(DEFAULT_DELIMITER);
+			return toInt(numberLiterals[0]) + toInt(numberLiterals[1]);
 		}
-		return Integer.parseInt(expression);
+		return toInt(expression);
+	}
+
+	private int toInt(String numberLiteral) {
+		return Integer.parseInt(numberLiteral);
 	}
 
 }
