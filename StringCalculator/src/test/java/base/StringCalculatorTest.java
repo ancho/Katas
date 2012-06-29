@@ -1,8 +1,7 @@
 package base;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -18,6 +17,12 @@ public class StringCalculatorTest {
 	public void single_number_literal_returns_its_value() throws Exception {
 		StringCalculator calculator = new StringCalculator();
 		assertThat( calculator.add("42"), is(42));
+	}
+	
+	@Test
+	public void two_delimited_number_literals_returns_sum() throws Exception {
+		StringCalculator calculator = new StringCalculator();
+		assertThat( calculator.add("1,2"), is(3));
 	}
 	
 
