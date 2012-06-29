@@ -7,15 +7,20 @@ public class StringCalculator {
 	private static final String DELIMITER_EXPRESSION = "[" + DEFAULT_DELIMITER + NEWLINE_DELIMITER + "]";
 
 	public int add(String expression) {
-		
-		return calculateSum(expression);
+		String[] numberLiterals = parse(expression);
+		return calculateSum(numberLiterals);
 	}
 
-	private int calculateSum(String expression) {
+	private String[] parse(String expression) {
+		String[] numberLiterals = expression.split(DELIMITER_EXPRESSION);
+		return numberLiterals;
+	}
+
+	private int calculateSum(String[] numberLiterals) {
 		
 		int sum = 0;
 		
-		for (String numberLiteral : expression.split(DELIMITER_EXPRESSION)) {
+		for (String numberLiteral : numberLiterals) {
 			if( numberLiteral.isEmpty() ) continue;
 			sum += toInt(numberLiteral);
 		}

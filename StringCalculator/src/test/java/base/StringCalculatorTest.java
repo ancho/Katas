@@ -36,5 +36,10 @@ public class StringCalculatorTest {
 		assertThat( calculator.add("1,2,3,4"), is(10));
 	}
 	
+	@Test
+	public void newline_as_delimiter_should_be_recognized() throws Exception {
+		assertThat( calculator.add("1\n2,3"), is(6));
+	}
+	
 
 }
