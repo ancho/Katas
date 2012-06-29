@@ -6,13 +6,18 @@ public class StringCalculator {
 
 	public int add(String expression) {
 		
-		if( expression.isEmpty() ) return 0;
+		return calculateSum(expression);
+	}
+
+	private int calculateSum(String expression) {
 		
-		if( expression.contains(DEFAULT_DELIMITER)){
-			String[] numberLiterals = expression.split(DEFAULT_DELIMITER);
-			return toInt(numberLiterals[0]) + toInt(numberLiterals[1]);
+		int sum = 0;
+		
+		for (String numberLiteral : expression.split(DEFAULT_DELIMITER)) {
+			if( numberLiteral.isEmpty() ) continue;
+			sum += toInt(numberLiteral);
 		}
-		return toInt(expression);
+		return sum;
 	}
 
 	private int toInt(String numberLiteral) {
