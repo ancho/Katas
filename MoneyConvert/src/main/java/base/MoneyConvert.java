@@ -20,6 +20,9 @@ public class MoneyConvert {
 		dictionary.put(8, "eight");
 		dictionary.put(9, "nine");
 		dictionary.put(10, "ten");
+		
+		dictionary.put(11, "eleven");
+		
 		dictionary.put(20, "twenty");
 		dictionary.put(30, "thirty");
 		dictionary.put(40, "fourty");
@@ -46,8 +49,8 @@ public class MoneyConvert {
 		String amountAsString = "";
 		if (amount >= 1000) {
 			int fourDigitAmount = amount / 1000;
-			amountAsString += convert(fourDigitAmount);
 			updateAmount(fourDigitAmount*1000);
+			amountAsString += new MoneyConvert().convert(fourDigitAmount);
 			amountAsString += "thousand";
 		}
 		return amountAsString;
@@ -70,7 +73,13 @@ public class MoneyConvert {
 	}
 
 	private String convertDoubleDigit() {
-		int doubleDigit = (amount / 10) * 10;
+		int doubleDigit = 0;
+		if( dictionary.containsKey( amount )){
+			doubleDigit = amount;
+		}
+		else{
+			doubleDigit = (amount / 10) * 10;
+		}
 		updateAmount(doubleDigit);
 		return lookup(doubleDigit);
 	}

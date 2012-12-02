@@ -70,5 +70,23 @@ public class MoneyConvertTest {
 	public void convert_1000_to_onethousand() throws Exception {
 		assertThat(mc.convert(1000), is("onethousand"));
 	}
+	
+	@Test
+	public void convert_1100_to_onethousandonehundret() throws Exception {
+		assertThat(mc.convert(1100), is("onethousandonehundret"));
+	}
+	
+	@Test
+	public void convert_1110_to_onethousandonehundretten() throws Exception {
+		assertThat(mc.convert(1110), is("onethousandonehundretten"));
+	}
+	
+	@Test
+	public void convert_1111_to_onethousandonehundreteleven() throws Exception {
+		assertThat(mc.convert(1111), is("onethousandonehundreteleven"));
+	}
+
+
+
 
 }
