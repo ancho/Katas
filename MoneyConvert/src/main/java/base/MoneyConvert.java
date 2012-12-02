@@ -32,6 +32,12 @@ public class MoneyConvert {
 	public String convert(int amount) {
 		String amountAsString = "";
 		
+		if ( amount >= 100 ){
+		int threeDigitAmount = amount / 100;
+		amountAsString += lookup(threeDigitAmount);
+		amountAsString += "hundret";
+		}
+		
 		amountAsString += convertDoubleDigit(amount);
 		amountAsString += convertSingleDigit(amount);
 		return amountAsString;

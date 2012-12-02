@@ -50,4 +50,9 @@ public class MoneyConvertTest {
 	public void convert_99_to_ninetynine() throws Exception {
 		assertThat(mc.convert(99), is("ninetynine"));
 	}
+	
+	@Test
+	public void convert_100_to_onehundret() throws Exception {
+		assertThat(mc.convert(100), is("onehundret"));
+	}
 }
