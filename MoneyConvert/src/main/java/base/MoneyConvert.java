@@ -31,7 +31,14 @@ public class MoneyConvert {
 		
 	}
 	public String convert(int amount) {
-		return convertSingleDigit(amount);
+		String amountAsString = "";
+		
+		int doubleDigit = (amount / 10) * 10;
+		amountAsString += convertSingleDigit(doubleDigit);
+		
+		int singleDigit = amount % 10;
+		amountAsString += convertSingleDigit(singleDigit);
+		return amountAsString;
 	}
 	
 	private String convertSingleDigit(int amount) {

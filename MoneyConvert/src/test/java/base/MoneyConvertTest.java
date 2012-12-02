@@ -40,6 +40,11 @@ public class MoneyConvertTest {
 	public void convert_20_to_twenty() throws Exception {
 		assertThat(mc.convert(20), is("twenty"));
 	}
+	
+	@Test
+	public void convert_21_to_twentyone() throws Exception {
+		assertThat(mc.convert(21), is("twentyone"));
+	}
 
 
 }
