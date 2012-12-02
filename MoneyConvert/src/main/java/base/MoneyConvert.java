@@ -35,15 +35,21 @@ public class MoneyConvert {
 		String amountAsString = "";
 		this.amount = amount;
 
+		amountAsString += convertFourDigit();
+		amountAsString += convertThreeDigit();
+		amountAsString += convertDoubleDigit();
+		amountAsString += convertSingleDigit();
+		return amountAsString;
+	}
+
+	private String convertFourDigit() {
+		String amountAsString = "";
 		if (amount >= 1000) {
 			int fourDigitAmount = amount / 1000;
 			amountAsString += convert(fourDigitAmount);
 			updateAmount(fourDigitAmount*1000);
 			amountAsString += "thousand";
 		}
-		amountAsString += convertThreeDigit();
-		amountAsString += convertDoubleDigit();
-		amountAsString += convertSingleDigit();
 		return amountAsString;
 	}
 
