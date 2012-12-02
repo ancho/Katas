@@ -55,4 +55,10 @@ public class MoneyConvertTest {
 	public void convert_100_to_onehundret() throws Exception {
 		assertThat(mc.convert(100), is("onehundret"));
 	}
+	
+	@Test
+	public void convert_110_to_onehundretten() throws Exception {
+		assertThat(mc.convert(110), is("onehundretten"));
+	}
+
 }

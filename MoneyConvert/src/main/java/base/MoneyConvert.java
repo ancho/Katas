@@ -7,6 +7,8 @@ public class MoneyConvert {
 
 	private static Map<Integer, String> dictionary = new HashMap<Integer, String>();
 
+	private int amount=0;
+	
 	static {
 		dictionary.put(1, "one");
 		dictionary.put(2, "two");
@@ -31,26 +33,34 @@ public class MoneyConvert {
 
 	public String convert(int amount) {
 		String amountAsString = "";
-
-		amountAsString += convertThreeDigit(amount);
-		amountAsString += convertDoubleDigit(amount);
-		amountAsString += convertSingleDigit(amount);
+		this.amount = amount;
+		amountAsString += convertThreeDigit();
+		amountAsString += convertDoubleDigit();
+		amountAsString += convertSingleDigit();
 		return amountAsString;
 	}
 
-	private String convertThreeDigit(int amount) {
+	private String convertThreeDigit() {
 		String amountAsString = "";
 		if (amount >= 100) {
 			int threeDigitAmount = amount / 100;
+			amount -= threeDigitAmount * 100;
 			amountAsString += lookup(threeDigitAmount);
 			amountAsString += "hundret";
 		}
 		return amountAsString;
 	}
 
-	private String convertSingleDigit(int amount) {
+	private String convertSingleDigit() {
 		int singleDigit = amount % 10;
 		return lookup(singleDigit);
+	}
+
+
+	private String convertDoubleDigit() {
+		int doubleDigit = (amount / 10) * 10;
+		amount -= doubleDigit;
+		return lookup(doubleDigit);
 	}
 
 	private String lookup(int key) {
@@ -59,10 +69,4 @@ public class MoneyConvert {
 		}
 		return "";
 	}
-
-	private String convertDoubleDigit(int amount) {
-		int doubleDigit = (amount / 10) * 10;
-		return lookup(doubleDigit);
-	}
-
 }
