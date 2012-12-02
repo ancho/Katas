@@ -30,5 +30,16 @@ public class MoneyConvertTest {
 		assertThat(mc.convert(8), is("eight"));
 		assertThat(mc.convert(9), is("nine"));
 	}
+	
+	@Test
+	public void convert_10_to_ten() throws Exception {
+		assertThat(mc.convert(10), is("ten"));
+	}
+	
+	@Test
+	public void convert_20_to_twenty() throws Exception {
+		assertThat(mc.convert(20), is("twenty"));
+	}
+
 
 }

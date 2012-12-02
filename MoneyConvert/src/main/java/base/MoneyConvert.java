@@ -18,6 +18,16 @@ public class MoneyConvert {
 		dictionary.put(7, "seven");
 		dictionary.put(8, "eight");
 		dictionary.put(9, "nine");
+		dictionary.put(10, "ten");
+		dictionary.put(20, "twenty");
+		dictionary.put(30, "thirty");
+		dictionary.put(40, "fourty");
+		dictionary.put(50, "fifty");
+		dictionary.put(60, "sixty");
+		dictionary.put(70, "seventy");
+		dictionary.put(80, "eighty");
+		dictionary.put(90, "ninety");
+		
 		
 	}
 	public String convert(int amount) {
