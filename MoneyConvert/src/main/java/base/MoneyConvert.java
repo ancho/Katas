@@ -6,7 +6,7 @@ import java.util.Map;
 public class MoneyConvert {
 
 	private static Map<Integer, String> dictionary = new HashMap<Integer, String>();
-	
+
 	static {
 		dictionary.put(1, "one");
 		dictionary.put(2, "two");
@@ -26,20 +26,25 @@ public class MoneyConvert {
 		dictionary.put(70, "seventy");
 		dictionary.put(80, "eighty");
 		dictionary.put(90, "ninety");
-		
-		
+
 	}
+
 	public String convert(int amount) {
 		String amountAsString = "";
-		
-		if ( amount >= 100 ){
-		int threeDigitAmount = amount / 100;
-		amountAsString += lookup(threeDigitAmount);
-		amountAsString += "hundret";
-		}
-		
+
+		amountAsString += convertThreeDigit(amount);
 		amountAsString += convertDoubleDigit(amount);
 		amountAsString += convertSingleDigit(amount);
+		return amountAsString;
+	}
+
+	private String convertThreeDigit(int amount) {
+		String amountAsString = "";
+		if (amount >= 100) {
+			int threeDigitAmount = amount / 100;
+			amountAsString += lookup(threeDigitAmount);
+			amountAsString += "hundret";
+		}
 		return amountAsString;
 	}
 
@@ -49,7 +54,7 @@ public class MoneyConvert {
 	}
 
 	private String lookup(int key) {
-		if ( dictionary.containsKey(key)){
+		if (dictionary.containsKey(key)) {
 			return dictionary.get(key);
 		}
 		return "";
