@@ -6,6 +6,9 @@ public class MoneyConvert {
 		if ( amount == 1 ){
 			return "one";
 		}
+		else if ( amount == 2 ) {
+			return "two";
+		}
 		return "";
 	}
 
