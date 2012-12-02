@@ -44,7 +44,7 @@ public class MoneyConvert {
 		String amountAsString = "";
 		if (amount >= 100) {
 			int threeDigitAmount = amount / 100;
-			amount -= threeDigitAmount * 100;
+			updateAmount( threeDigitAmount * 100 );
 			amountAsString += lookup(threeDigitAmount);
 			amountAsString += "hundret";
 		}
@@ -59,8 +59,12 @@ public class MoneyConvert {
 
 	private String convertDoubleDigit() {
 		int doubleDigit = (amount / 10) * 10;
-		amount -= doubleDigit;
+		updateAmount(doubleDigit);
 		return lookup(doubleDigit);
+	}
+
+	private void updateAmount(int value) {
+		amount -= value;
 	}
 
 	private String lookup(int key) {
