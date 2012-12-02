@@ -46,5 +46,8 @@ public class MoneyConvertTest {
 		assertThat(mc.convert(21), is("twentyone"));
 	}
 
-
+	@Test
+	public void convert_99_to_ninetynine() throws Exception {
+		assertThat(mc.convert(99), is("ninetynine"));
+	}
 }
