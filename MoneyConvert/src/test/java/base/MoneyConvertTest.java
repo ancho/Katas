@@ -84,6 +84,14 @@ public class MoneyConvertTest {
 	@Test
 	public void convert_1111_to_onethousandonehundreteleven() throws Exception {
 		assertThat(mc.convert(1111), is("onethousandonehundreteleven"));
+		assertThat(mc.convert(1112), is("onethousandonehundrettwelve"));
+		assertThat(mc.convert(1113), is("onethousandonehundretthirteen"));
+		assertThat(mc.convert(1114), is("onethousandonehundretfourteen"));
+		assertThat(mc.convert(1115), is("onethousandonehundretfifteen"));
+		assertThat(mc.convert(1116), is("onethousandonehundretsixteen"));
+		assertThat(mc.convert(1117), is("onethousandonehundretseventeen"));
+		assertThat(mc.convert(1118), is("onethousandonehundreteighteen"));
+		assertThat(mc.convert(1119), is("onethousandonehundretnineteen"));
 	}
 
 

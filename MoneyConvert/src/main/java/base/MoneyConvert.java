@@ -22,6 +22,14 @@ public class MoneyConvert {
 		dictionary.put(10, "ten");
 		
 		dictionary.put(11, "eleven");
+		dictionary.put(12, "twelve");
+		dictionary.put(13, "thirteen");
+		dictionary.put(14, "fourteen");
+		dictionary.put(15, "fifteen");
+		dictionary.put(16, "sixteen");
+		dictionary.put(17, "seventeen");
+		dictionary.put(18, "eighteen");
+		dictionary.put(19, "nineteen");
 		
 		dictionary.put(20, "twenty");
 		dictionary.put(30, "thirty");
